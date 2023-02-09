@@ -1,0 +1,38 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Oct  1 14:44:48 2021
+
+@author: Bhargav
+"""
+#%%
+import pandas as pd
+import pyextremes as py
+import matplotlib.pyplot as plt
+import os
+
+
+import seaborn as sns
+import numpy as np
+#import scipy 
+#import scipy.stats
+from scipy.stats import genextreme
+from numpy import linspace
+#from pylab import plot, show, hist, figure,title
+import pylab
+
+
+
+#%%
+filedir=(r'D:\Research Work\Synchronization work\Multivariate IDF\Kerala Floods Data_to Bhargav\Discharge')
+os.chdir(filedir)
+discharge=pd.read_excel('Discharge_Neeleswaram.xlsx')
+# indexing the dataframe by date series
+# convert the column(it's a string) to datetime type
+datetime_series=pd.to_datetime(discharge['Date'])
+# create datetime index passing the datetime series
+datetime_index=pd.DatetimeIndex(datetime_series.values)
+discharge_1985_2018=discharge.set_index(datetime_index)
+# we don't need the date column anymore
+discharge_1985_2018.drop('Date',axis=1, inplace=True)
+pot_discharge=discharge_1985_2018.loc[discharge_1985_2018['Discharge']>1500,:]
+index_list=pd.DatetimeIndex(pot_discharge)
