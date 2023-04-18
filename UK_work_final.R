@@ -137,12 +137,7 @@ fig1_rp=plot_ly(x=rt_sf_surge$u1,y=rt_sf_surge$u2,z=rt_sf_surge$sfsurge,type="co
 
 source("returnperiods.r")
 
-
-setwd("F:/Research Work/Synchronization work/Multivariate IDF/R Codes/spcopula-master/R")
-
-
-
 write.csv(rt_sf_surge,"F:/Research Work/Synchronization work/Multivariate IDF/Draft/Results/Bivariate results/rt_sfsurge.csv")
  
 
-### observed data
+
